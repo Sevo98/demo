@@ -7,7 +7,7 @@ import java.util.*;
 @Data
 @Builder
 public class ListsDTO {
-    private int ID;
+    private UUID ID;
     private String name;
     private Calendar CreationDate;
     private Calendar ChangeDate;

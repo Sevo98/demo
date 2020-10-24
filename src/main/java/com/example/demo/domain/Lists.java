@@ -1,6 +1,8 @@
 package com.example.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,17 +14,23 @@ import java.util.*;
 @NoArgsConstructor
 public class Lists implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    private int ID;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "Name")
     private String name;
 
     @Column(name = "CreationDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Calendar CreationDate;
 
     @Column(name = "ChangeDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Calendar ChangeDate;
 
 
@@ -31,6 +39,15 @@ public class Lists implements Serializable {
         CreationDate = creationDate;
         ChangeDate = changeDate;
     }
+
+    public void setID(UUID id) {
+        this.id = id;
+    }
+
+    public UUID getID() {
+        return this.id;
+    }
+
 
 //    public UUID getID() {
 //        return ID;
