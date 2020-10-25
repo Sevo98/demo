@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-@Table(name = "Business")
-public class Business implements Serializable {
+@Table(name = "tasks")
+public class Tasks implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class Business implements Serializable {
     @Column(name = "Name")
     private String name;
 
-    @Column(name = "CreateDate")
+    @Column(name = "create_date")
     private Calendar CreateDate;
 
     @Column(name = "ChangeDate")
@@ -25,11 +25,11 @@ public class Business implements Serializable {
     @Column(name = "IDList")
     private UUID IDList;
 
-    public Business(){
+    public Tasks(){
 
     }
 
-    public Business(String name, Calendar createDate, Calendar changeDate, UUID IDList) {
+    public Tasks(String name, Calendar createDate, Calendar changeDate, UUID IDList) {
         this.name = name;
         CreateDate = createDate;
         ChangeDate = changeDate;
