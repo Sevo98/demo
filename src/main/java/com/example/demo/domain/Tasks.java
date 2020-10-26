@@ -1,11 +1,15 @@
 package com.example.demo.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "tasks")
+@Data
+@NoArgsConstructor
 public class Tasks implements Serializable {
 
     @Id
@@ -19,62 +23,22 @@ public class Tasks implements Serializable {
     @Column(name = "create_date")
     private Calendar CreateDate;
 
-    @Column(name = "ChangeDate")
+    @Column(name = "change_date")
     private Calendar ChangeDate;
+
+    @Column(name = "done")
+    private boolean done;
 
     @Column(name = "IDList")
     private UUID IDList;
 
-    public Tasks(){
 
-    }
-
-    public Tasks(String name, Calendar createDate, Calendar changeDate, UUID IDList) {
+    public Tasks(String name, Calendar createDate, Calendar changeDate, boolean done, UUID IDList) {
         this.name = name;
         CreateDate = createDate;
         ChangeDate = changeDate;
+        this.done = done;
         this.IDList = IDList;
     }
-
-    public UUID getID() {
-        return ID;
-    }
-
-    public void setID(UUID ID) {
-        this.ID = ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Calendar getCreateDate() {
-        return CreateDate;
-    }
-
-    public void setCreateDate(Calendar createDate) {
-        CreateDate = createDate;
-    }
-
-    public Calendar getChangeDate() {
-        return ChangeDate;
-    }
-
-    public void setChangeDate(Calendar changeDate) {
-        ChangeDate = changeDate;
-    }
-
-    public UUID getIDList() {
-        return IDList;
-    }
-
-    public void setIDList(UUID IDList) {
-        this.IDList = IDList;
-    }
-
 
 }

@@ -48,37 +48,4 @@ public class Lists implements Serializable {
         return this.id;
     }
 
-
-//    public UUID getID() {
-//        return ID;
-//    }
-//
-//    public void setID(UUID ID) {
-//        this.ID = ID;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public Calendar getCreationDate() {
-//        return CreationDate;
-//    }
-//
-//    public void setCreationDate(Calendar creationDate) {
-//        CreationDate = creationDate;
-//    }
-//
-//    public Calendar getChangeDate() {
-//        return ChangeDate;
-//    }
-//
-//    public void setChangeDate(Calendar changeDate) {
-//        ChangeDate = changeDate;
-//    }
-
 }
