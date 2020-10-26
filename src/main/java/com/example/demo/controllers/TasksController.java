@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Java-doc
+ */
 @RestController
 public class TasksController {
 
@@ -21,4 +24,6 @@ public class TasksController {
     public List<Tasks> allTasks() {
         return tasksRepository.findAll();
     }
+
+    // TODO: тут методов не хватает, но думаю вы это знаете
 }

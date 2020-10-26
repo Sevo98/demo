@@ -8,21 +8,25 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * Java-doc
+ */
 @Entity
 @Table (name = "List")
 @Data
 @NoArgsConstructor
-public class Lists implements Serializable {
+public class Lists implements Serializable { // TODO: лучше в единственном числе
+
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    ) // TODO: проще в конструкторе при создании давайть UUID
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
-    @Column(name = "Name")
+    @Column(name = "Name") // TODO: тут и далее в именах таблиц и колонок лучше использовать верхний регистр в формате XXX_YYY_ZZZ
     private String name;
 
     @Column(name = "CreationDate")
@@ -33,7 +37,6 @@ public class Lists implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Calendar ChangeDate;
 
-
     public Lists(String name, Calendar creationDate, Calendar changeDate) {
         this.name = name;
         CreationDate = creationDate;
@@ -43,7 +46,7 @@ public class Lists implements Serializable {
     public void setID(UUID id) {
         this.id = id;
     }
-
+    // TODO: разве геттеры/серреты в @Data не входят ???
     public UUID getID() {
         return this.id;
     }

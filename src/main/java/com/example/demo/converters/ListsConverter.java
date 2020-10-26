@@ -4,6 +4,9 @@ import com.example.demo.domain.Lists;
 import com.example.demo.dto.ListsDTO;
 import org.springframework.stereotype.Component;
 
+/**
+ * Java-doc
+ */
 @Component
 public class ListsConverter {
     public Lists fromListsDtoToLists(ListsDTO listsDTO){

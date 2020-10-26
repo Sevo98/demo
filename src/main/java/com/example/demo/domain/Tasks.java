@@ -19,12 +19,13 @@ public class Tasks implements Serializable {
     @Column(name = "create_date")
     private Calendar CreateDate;
 
-    @Column(name = "ChangeDate")
+    @Column(name = "ChangeDate") // TODO: имена полей в базе в формате create_date и лучше большими буквами. в java коде camelCase
     private Calendar ChangeDate;
 
     @Column(name = "IDList")
-    private UUID IDList;
+    private UUID IDList; // тут не так, тут private Lists list; почитайте про аннотации @ManyToOne @JoinColumn
 
+    // TODO: @AllArgConstructor аннотация lombok
     public Tasks(){
 
     }
@@ -36,6 +37,7 @@ public class Tasks implements Serializable {
         this.IDList = IDList;
     }
 
+    // TODO: тут и ниже все методы можно хзаменить на @Getter/@Setter аннотации lombok
     public UUID getID() {
         return ID;
     }

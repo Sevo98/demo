@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+/**
+ * java-doc и у методов тоже
+ */
 @RestController
 @RequestMapping("/todo")
 @AllArgsConstructor
@@ -23,7 +26,7 @@ public class ListsController {
 
     @GetMapping("/findAll")
     public List<ListsDTO> findAllLists(){
-        return listsService.findAll();
+        return listsService.findAll(); // TODO: не зыбыть про филтрацию, сортировку, пагинацию
     }
 
     @GetMapping("findByName/{name}")

@@ -12,7 +12,9 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class DefaultListsService implements ListsService {
+public class DefaultListsService implements ListsService { // TODO: лучше назвать ListsServiceImpl
+
+    // TODO: как они инжектятся?
     private final ListsRepository listsRepository;
     private final ListsConverter listsConverter;
 
