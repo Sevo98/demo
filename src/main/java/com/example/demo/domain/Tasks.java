@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,25 +21,28 @@ public class Tasks implements Serializable {
     @Column(name = "Name")
     private String name;
 
-    @Column(name = "create_date")
-    private Calendar CreateDate;
+    @Column(name = "CreationDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private Calendar CreationDate;
 
-    @Column(name = "change_date")
+    @Column(name = "ChangeDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Calendar ChangeDate;
 
-    @Column(name = "done")
-    private boolean done;
+    @Column(name = "urgency")
+    private int urgency;
 
-    @Column(name = "IDList")
-    private UUID IDList;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "listsid", referencedColumnName = "id")//TODO: сделать как сказал наставник
+    private Lists list;
 
 
-    public Tasks(String name, Calendar createDate, Calendar changeDate, boolean done, UUID IDList) {
+    public Tasks(String name, Calendar createDate, Calendar changeDate, int urgency, Lists list) {
         this.name = name;
-        CreateDate = createDate;
+        CreationDate = createDate;
         ChangeDate = changeDate;
-        this.done = done;
-        this.IDList = IDList;
+        this.urgency = urgency;
+        this.list = list;
     }
 
 }

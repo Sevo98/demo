@@ -11,9 +11,9 @@ public class TasksConverter {
 
         tasks.setID(tasksDTO.getID());
         tasks.setName(tasksDTO.getName());
-        tasks.setCreateDate(tasksDTO.getCreationDate());
+        tasks.setCreationDate(tasksDTO.getCreationDate());
         tasks.setChangeDate(tasksDTO.getChangeDate());
-        tasks.setIDList(tasksDTO.getIDList());
+        tasks.setList(tasksDTO.getList());
 
         return tasks;
     }
@@ -22,9 +22,9 @@ public class TasksConverter {
         return TasksDTO.builder()
                 .ID(tasks.getID())
                 .name(tasks.getName())
-                .CreationDate(tasks.getCreateDate())
+                .CreationDate(tasks.getCreationDate())
                 .ChangeDate(tasks.getChangeDate())
-                .IDList(tasks.getIDList())
+                .list(tasks.getList())
                 .build();
     }
 }

@@ -26,5 +26,4 @@ public class TasksController {
         return tasksService.findAll();
     }
 
-
 }
