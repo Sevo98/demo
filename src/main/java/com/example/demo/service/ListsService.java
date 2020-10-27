@@ -6,7 +6,7 @@ import java.util.*;
 
 public interface ListsService {
     ListsDTO saveLists(ListsDTO listsDTO);
-    void deleteLists(int ID);
+    void deleteLists(UUID ID);
     ListsDTO findByName(String name);
     List<ListsDTO> findAll();
 

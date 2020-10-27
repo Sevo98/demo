@@ -32,7 +32,7 @@ public class ListsController {
     }
 
     @DeleteMapping("/delete/{ID}")
-    public ResponseEntity<Void> deleteLists(@PathVariable int ID){
+    public ResponseEntity<Void> deleteLists(@PathVariable UUID ID){
         listsService.deleteLists(ID);
         return ResponseEntity.ok().build();
     }

@@ -23,7 +23,7 @@ public class DefaultListsService implements ListsService {
     }
 
     @Override
-    public void deleteLists(int listsID){
+    public void deleteLists(UUID listsID){
         listsRepository.deleteById(listsID);
     }
     @Override
