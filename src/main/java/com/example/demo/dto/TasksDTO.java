@@ -13,4 +13,5 @@ public class TasksDTO {
     private Calendar CreationDate;
     private Calendar ChangeDate;
     private Lists list;
+    private Boolean complete;
 }

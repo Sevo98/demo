@@ -32,10 +32,12 @@ public class Tasks implements Serializable {
     @Column(name = "urgency")
     private int urgency;
 
+    @Column(name = "complete")
+    private Boolean complete;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "listsid", referencedColumnName = "id")//TODO: сделать как сказал наставник
     private Lists list;
-
 
     public Tasks(String name, Calendar createDate, Calendar changeDate, int urgency, Lists list) {
         this.name = name;

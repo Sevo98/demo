@@ -14,6 +14,7 @@ public class TasksConverter {
         tasks.setCreationDate(tasksDTO.getCreationDate());
         tasks.setChangeDate(tasksDTO.getChangeDate());
         tasks.setList(tasksDTO.getList());
+        tasks.setComplete(tasksDTO.getComplete());
 
         return tasks;
     }
@@ -25,6 +26,7 @@ public class TasksConverter {
                 .CreationDate(tasks.getCreationDate())
                 .ChangeDate(tasks.getChangeDate())
                 .list(tasks.getList())
+                .complete(tasks.getComplete())
                 .build();
     }
 }
