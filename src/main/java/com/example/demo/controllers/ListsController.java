@@ -57,6 +57,13 @@ public class ListsController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+
+    @PutMapping
+    public ResponseEntity<ListsDTO> updateLists(@RequestParam UUID id, @RequestParam String name){
+        listsServiceImpl.updateLists(id, name);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/findAll")
     public List<ListsDTO> findAllLists(){
         return listsServiceImpl.findAll();

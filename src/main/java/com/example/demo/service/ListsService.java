@@ -15,4 +15,6 @@ public interface ListsService {
 
     List<ListsDTO> findAll();
 
+    void updateLists(UUID id, String name);
+
 }

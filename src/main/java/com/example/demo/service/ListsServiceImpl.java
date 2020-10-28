@@ -5,7 +5,10 @@ import com.example.demo.domain.Lists;
 import com.example.demo.dto.ListsDTO;
 import com.example.demo.repository.ListsRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.*;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -18,6 +21,11 @@ public class ListsServiceImpl implements ListsService {
     private final ListsRepository listsRepository;
 
     private final ListsConverter listsConverter;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    private static final String SQL_UPDATE = "UPDATE list SET name = ? WHERE id = ?";
 
     @Override
     public ListsDTO saveLists(ListsDTO listsDTO) {
@@ -50,5 +58,10 @@ public class ListsServiceImpl implements ListsService {
                 .stream()
                 .map(listsConverter::fromListsToListsDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateLists(UUID id, String name) {
+        jdbcTemplate.update(SQL_UPDATE, new Object[]{name, id});
     }
 }
