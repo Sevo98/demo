@@ -12,8 +12,10 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class DefaultListsService implements ListsService {
+public class ListsServiceImpl implements ListsService {
+
     private final ListsRepository listsRepository;
+
     private final ListsConverter listsConverter;
 
     @Override
@@ -23,19 +25,21 @@ public class DefaultListsService implements ListsService {
     }
 
     @Override
-    public void deleteLists(UUID listsID){
+    public void deleteLists(UUID listsID) {
         listsRepository.deleteById(listsID);
     }
+
     @Override
-    public ListsDTO findByName(String name){
+    public ListsDTO findByName(String name) {
         Lists lists = listsRepository.findByName(name);
         if (lists != null) {
             return listsConverter.fromListsToListsDto(lists);
         }
         return null;
     }
+
     @Override
-    public List<ListsDTO> findAll(){
+    public List<ListsDTO> findAll() {
         return listsRepository.findAll()
                 .stream()
                 .map(listsConverter::fromListsToListsDto)
