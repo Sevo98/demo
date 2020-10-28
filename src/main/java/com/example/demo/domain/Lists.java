@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
@@ -25,13 +26,22 @@ public class Lists implements Serializable {
     @Column(name = "Name")
     private String name;
 
+//    @Column(name = "ChangeDate")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+//    private LocalDateTime ChangeDate = LocalDateTime.now();
+//
+//    @Column(name = "CreationDate")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+//    private LocalDateTime CreationDate = LocalDateTime.now();
+
+
     @Column(name = "CreationDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Calendar CreationDate;
+    private Calendar CreationDate = Calendar.getInstance();
 
     @Column(name = "ChangeDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Calendar ChangeDate;
+    private Calendar ChangeDate = Calendar.getInstance();
 
 
     public Lists(String name, Calendar creationDate, Calendar changeDate) {

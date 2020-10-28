@@ -5,6 +5,7 @@ import com.example.demo.domain.Lists;
 import com.example.demo.dto.ListsDTO;
 import com.example.demo.repository.ListsRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -36,6 +37,11 @@ public class ListsServiceImpl implements ListsService {
             return listsConverter.fromListsToListsDto(lists);
         }
         return null;
+    }
+
+    @Override
+    public Page<Lists> lists(Pageable pageable) {
+        return listsRepository.findAll(pageable);
     }
 
     @Override
