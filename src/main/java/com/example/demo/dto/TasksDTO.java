@@ -3,6 +3,7 @@ package com.example.demo.dto;
 import com.example.demo.domain.Lists;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Data
@@ -10,8 +11,9 @@ import java.util.*;
 public class TasksDTO {
     private UUID ID;
     private String name;
-    private Calendar CreationDate;
-    private Calendar ChangeDate;
-    private Lists list;
+    private LocalDate creation_date;
+    private LocalDate change_date;
+    private int urgency;
+    private UUID listsid;
     private Boolean complete;
 }

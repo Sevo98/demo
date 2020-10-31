@@ -2,9 +2,11 @@ package com.example.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -14,20 +16,24 @@ import java.util.*;
 public class Tasks implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private UUID ID;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "Name")
     private String name;
 
-    @Column(name = "CreationDate")
+    @Column(name = "creation_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Calendar CreationDate;
+    private LocalDate creation_date;
 
-    @Column(name = "ChangeDate")
+    @Column(name = "change_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Calendar ChangeDate;
+    private LocalDate change_date;
 
     @Column(name = "urgency")
     private int urgency;
@@ -37,14 +43,22 @@ public class Tasks implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "listsid", referencedColumnName = "id")//TODO: сделать как сказал наставник
-    private Lists list;
+    private Lists listsid;
 
-    public Tasks(String name, Calendar createDate, Calendar changeDate, int urgency, Lists list) {
-        this.name = name;
-        CreationDate = createDate;
-        ChangeDate = changeDate;
-        this.urgency = urgency;
-        this.list = list;
+    public void setID(UUID id) {
+        this.id = id;
     }
+
+    public UUID getID() {
+        return this.id;
+    }
+
+//    public Tasks(String name, Calendar createDate, Calendar changeDate, int urgency, Lists listsid) {
+//        this.name = name;
+//        CreationDate = createDate;
+//        ChangeDate = changeDate;
+//        this.urgency = urgency;
+//        this.listsid = listsid;
+//    }
 
 }
